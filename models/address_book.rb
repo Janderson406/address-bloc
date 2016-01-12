@@ -21,4 +21,10 @@ class AddressBook
    @entries.insert(index, Entry.new(name, phone_number, email))
    #insert a new entry into entries using the calculated `index
  end
+
+ def remove_entry(name, phone_number, email)
+     @entries.delete_if {|entry| name == entry.name && phone_number == entry.phone_number && email == entry.email}
+ end
+
+
 end
