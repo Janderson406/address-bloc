@@ -15,6 +15,7 @@ class MenuController
     puts "3 - Search for an entry"
     puts "4 - Import entries from a CSV"
     puts "5 - Exit"
+    puts "6 - View Entry Number n"
     print "Enter your selection: "
 
    #retrieve user input from the command line using gets.
@@ -43,6 +44,14 @@ class MenuController
       #'0' signals program is exiting without an error
        exit(0)
       #catch invalid user input & prompt user to retry
+     when 6
+        system "clear"
+        if @address_book.entries.count == 0
+          print "There are no entries to display yet\n\n"
+        else
+          view_by_number
+        end
+        main_menu
      else
        system "clear"
        puts "Sorry, that is not a valid input"
@@ -84,6 +93,13 @@ class MenuController
    end
 
    def read_csv
+   end
+
+   #added method to search by number
+   def view_by_number
+     print "Enter contact entry number (between 1 and #{@address_book.entries.count}) to retrieve: "
+     number = gets.chomp.to_i
+     puts @address_book.entries[number-1]
    end
 
    def entry_submenu(entry)
