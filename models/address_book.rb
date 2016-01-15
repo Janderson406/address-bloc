@@ -34,5 +34,30 @@ class AddressBook
    end
  end
 
+#BINARY SEARCH METHOD
+ def binary_search(name)
+   #save the index of leftmost item in 'lower' // rightmost item 'upper'
+   lower = 0
+     upper = @entries.length - 1
+
+    #loop while lower index is less or equal to our upper index
+     while lower <= upper
+       #Ruby truncates decimal numbers, so 5 and 0: then mid will get set to 2
+       mid = (lower + upper) / 2
+       mid_name = @entries[mid].name
+
+ #if name is equal to mid_name we've found the name
+ #we are looking for so we return the entry at index mid.
+       if name == mid_name
+         return @entries[mid]
+       elsif name < mid_name #If name is alphabetically before mid_name, then we set upper to mid - 1 because the name must be in the lower half of the array.
+         upper = mid - 1
+       elsif name > mid_name #If name is alphabetically after mid_name, then we set lower to mid + 1 because the name must be in the upper half of the array.
+         lower = mid + 1
+       end
+     end
+  #f we divide and conquer to the point where no match is found, we return nil.   
+   return nil
+ end
 
 end
