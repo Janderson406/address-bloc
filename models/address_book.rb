@@ -56,8 +56,18 @@ class AddressBook
          lower = mid + 1
        end
      end
-  #f we divide and conquer to the point where no match is found, we return nil.   
+  #f we divide and conquer to the point where no match is found, we return nil.
    return nil
  end
+
+#ASSIGNMENT: ITERATIVE SEARCH
+  def iterative_search(name)
+    @entries.each do |search|
+      if name == search.name
+        return search
+      end
+    end
+        return nil
+  end
 
 end
